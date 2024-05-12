@@ -1,9 +1,9 @@
 <script lang="ts">
-    import { Github, GitBranch, ArrowUp, ArrowDown, Mail, Send, Linkedin, Instagram, Twitter} from 'lucide-svelte';
+    import { Github, ArrowUp, ArrowDown, Mail, Send, Linkedin, Instagram, Twitter} from 'lucide-svelte';
     import EachExperience from "../components/eachExperience.svelte";
     import EachProject from "../components/eachProject.svelte";
-    import DagmawiBabiLogo from "$lib/assets/DagmawiBabiLogo2.png"
-    import Me from "$lib/assets/Me.png"
+    import DagmawiBabiLogo from "../lib/assets/DagmawiBabiLogo2.png"
+    import Me from "../lib/assets/Me.png"
 
     var projects = [
         {
