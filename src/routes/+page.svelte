@@ -1,8 +1,9 @@
 <script lang="ts">
-    import { Github, GitBranch} from 'lucide-svelte';
+    import { Github, GitBranch, ArrowUp, ArrowDown, Mail, Send, Linkedin, Instagram, Twitter} from 'lucide-svelte';
     import EachExperience from "../components/eachExperience.svelte";
     import EachProject from "../components/eachProject.svelte";
-
+    import DagmawiBabiLogo from "$lib/assets/DagmawiBabiLogo2.png"
+    import Me from "$lib/assets/Me.png"
 
     var projects = [
         {
@@ -23,34 +24,259 @@
         },
     ]
 
+    var techTools = [
+        {
+            "tech": "Flutter",
+            "logo": "https://iconape.com/wp-content/png_logo_vector/flutter-logo.png"
+        },
+        {
+            "tech": "NextJS",
+            "logo": "https://static-00.iconduck.com/assets.00/nextjs-icon-512x512-y563b8iq.png"
+        },
+        {
+            "tech": "SvelteKit",
+            "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Svelte_logo_by_gengns.svg/640px-Svelte_logo_by_gengns.svg.png"
+        },
+        {
+            "tech": "Tailwind",
+            "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/1280px-Tailwind_CSS_Logo.svg.png"
+        },
+        {
+            "tech": "HonoJS",
+            "logo": "https://avatars.githubusercontent.com/u/98495527?s=280&v=4"
+        },
+        {
+            "tech": "NodeJS",
+            "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968322.png"
+        },
+        {
+            "tech": "MongoDB",
+            "logo": "https://cdn.iconscout.com/icon/free/png-256/free-mongodb-2-1175137.png?f=webp"
+        },
+        {
+            "tech": "Docker",
+            "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Docker-svgrepo-com.svg/900px-Docker-svgrepo-com.svg.png?20230427111848"
+        },
+        {
+            "tech": "Kubernetes",
+            "logo": "https://static-00.iconduck.com/assets.00/kubernetes-icon-2048x1995-r1q3f8n7.png"
+        },
+        {
+            "tech": "Python",
+            "logo": "https://cdn.freebiesupply.com/logos/large/2x/python-5-logo-png-transparent.png"
+        },
+        {
+            "tech": "Rust",
+            "logo": "https://static-00.iconduck.com/assets.00/rust-icon-2048x2047-5s6wkmk1.png"
+        },
+        {
+            "tech": "C#",
+            "logo": "https://www.netgen.co.za/wp-content/uploads/2022/03/C-image-for-Netgen-1024x1024.png"
+        },
+        {
+            "tech": "C++",
+            "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/C%2B%2B_logo.png/800px-C%2B%2B_logo.png?20210422185554"
+        },
+        {
+            "tech": "ChromiaDB",
+            "logo": "https://imagedelivery.net/hbJAA5-ie3CnRrtzIJuUXA/5ee06278-16a7-4812-a260-9c1758a84800/public"
+        },
+        {
+            "tech": "Unity",
+            "logo": "https://w7.pngwing.com/pngs/426/535/png-transparent-unity-new-logo-tech-companies-thumbnail.png"
+        },
+        {
+            "tech": "Arduino",
+            "logo": "https://e7.pngegg.com/pngimages/758/841/png-clipart-arduino-max-electronic-circuit-pure-data-oscilloscope-raspberry-pi-icons-logo-microcontroller-thumbnail.png"
+        },
+    ]
+
+    var hideAboutMe = false;
+    var hideCreatives = true;
+    var hideProjects = false;
+    var hideExperiences = false;
+
 
 </script>
 
-<div class="w-full">
-    <div class="w-1/2 h-screen mx-auto border-zinc-200">
-        <div class="pt-28"></div>
-        <div class="font-bold text-6xl py-2 px-10 w-fit font-mono bg-black text-white"> Dagmawi Babi </div>
+<div class="w-full ">
+    <div class="inset-0 -z-10 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
+
+    <div class="w-1/2 pb-96 mx-auto border-zinc-200 backdrop-blur-3xl">
+        <div class="pt-10"></div>
+        <div>
+            <!-- <Image src="./static/assets/DagmawiBabiLogo.png" alt="Channel Logo" width={20} height={20} /> -->
+            <!-- <img src="assets/DagmawiBabiLogo.png" alt=""> -->
+        </div>
+        <div class="flex gap-2">
+            <div class="">
+                <img src={DagmawiBabiLogo} alt="Channel Logo" class="w-20 object-fill"/>
+
+            </div>
+            <div class="flex justify-center items-center py-2 pl-5 pr-10 w-fit font-mono bg-zinc-950 text-white"> 
+                <span class="pl-2 text-6xl">
+                    Dagmawi Babi 
+                </span>
+            </div>
+        </div>
         <div class="pt-5"></div>
-        <!-- Creativity -->
-        <div class="font-bold text-2xl py-2 px-10 w-fit font-mono bg-black text-white"> Creativity </div>
+
+        <!-- About Me -->
+        <div class="flex gap-2 items-center font-bold text-2xl font-mono text-white "> 
+            <div class="bg-zinc-950 py-2 px-10 w-fit ">
+                About Me 
+            </div>
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
+            <!-- svelte-ignore a11y-no-static-element-interactions -->
+            <div class="text-black py-2" on:click={(e) => {hideAboutMe = !hideAboutMe}}>
+                {#if hideAboutMe == true}
+                    <ArrowDown size={16} />
+                {:else}
+                    <ArrowUp size={16} />                    
+                {/if}
+            </div>
+        </div>
+
         <div class="pl-16">
+            {#if hideAboutMe == true}
+                <div class="border-l border-dashed border-l-black pb-10"></div>
+            {:else}
+            <div class="border-l border-dashed border-l-black pb-5">
+                <div class="pt-8">
+                    <div class="flex items-center">
+                        <div class="border-b border-dashed border-black w-10 h-2"></div>
+                        <div class="border group flex gap-4 p-4 bg-white w-5/6 border-zinc-300 drop-shadow-lg duration-200 cursor-pointer">
+                            <img src={Me} alt="Me" class="w-96"/>
+                            <div class="flex flex-col gap-3">
+                                <p class="text-3xl font-semibold font-mono">
+                                    Hey there 👋 
+                                </p>
+                                <p class="text-lg leading-tight ">
+                                    My name is Dagmawi Esayas and I enjoy creating tech solutions to my daily problems. My interest in software development started back in 2013 when I accidentally stumbled upon a batch programming ebook in one of my harddrives — turns out there's so much you could do on a black & white terminal! 
+                                </p>
+                                <p class="py-2 text-lg leading-tight "> 
+                                    Fast-forward to today, and I've had the privilege of working at multiple start ups, an event organizing company, a huge corporation, and a student-led design club. My main focus these days is building accessible, inclusive products and digital experiences at Dream Intelligence for a variety of clients.
+                                </p>
+                                <p class="text-lg leading-tight font-semibold"> 
+                                    Here are some of the tech tools I use...
+                                </p>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+            {/if}
+        </div>
+        <div class="pl-16">
+            {#if hideAboutMe == false}
+            <div class="border-l border-dashed border-l-black pb-0">
+                <div class="pt-0">
+                    <div class="flex">
+                        <div class="border-b border-dashed border-black w-10 h-2 pt-20"></div>
+                        <div class="border group flex gap-4 p-4 bg-white w-5/6 border-zinc-300 drop-shadow-lg duration-200 cursor-pointer">
+                            <div class="flex flex-row flex-wrap gap-2">
+                                {#each techTools as eachTechTool}
+                                    <div class="flex items-center border border-dotted border-zinc-500 py-1 px-5 hover:bg-black hover:text-white">
+                                        <div class="w-6 h-5 flex items-center">
+                                            <img src={eachTechTool.logo} alt="" />
+                                        </div>
+                                        <span class="pl-2 text-xl">
+                                            {eachTechTool.tech}
+                                        </span>
+                                    </div>
+                                {/each}
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+            {/if}
+        </div>
+        <!-- CONTACTS -->
+        <div class="pl-16">
+            {#if hideAboutMe == false}
+            <div class="border-l border-dashed border-l-black pb-10">
+                <div class="flex">
+                    <div class="pl-10 pt-4 flex gap-3 items-center w-11/12 pr-20">  
+                    <div class=" hover:bg-zinc-950 hover:text-white underline-offset-8 flex py-3 px-4">
+                            <Send size={20}/>
+                            <span class="pl-2 text-xl font-semibold">
+                                Telegram
+                            </span>
+                        </div>
+                        <div class=" hover:bg-zinc-950 hover:text-white underline-offset-8 flex py-3 px-4">
+                            <Linkedin size={20}/>
+                            <span class="pl-2 text-xl font-semibold">
+                                LinkedIn
+                            </span>
+                        </div>
+                        <div class=" hover:bg-zinc-950 hover:text-white underline-offset-8 flex py-3 px-4">
+                            <Instagram size={20}/>
+                            <span class="pl-2 text-xl font-semibold">
+                                Instagram
+                            </span>
+                        </div>
+                        <div class=" hover:bg-zinc-950 hover:text-white underline-offset-8 flex py-3 px-4">
+                            <Twitter size={20}/>
+                            <span class="pl-2 text-xl font-semibold">
+                                Twitter
+                            </span>
+                        </div>
+                        <div class=" hover:bg-zinc-950 hover:text-white underline-offset-8 flex py-3 px-4">
+                            <Github size={20}/>
+                            <span class="pl-2 text-xl font-semibold">
+                                Github
+                            </span>
+                        </div>
+                        <div class=" hover:bg-zinc-950 hover:text-white underline-offset-8 flex py-3 px-4">
+                            <Mail size={20}/>
+                            <span class="pl-2 text-xl font-semibold">
+                                Email
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/if}
+        </div>
+
+        <!-- Creativity -->
+        <div class="flex gap-2 items-center font-bold text-2xl font-mono text-white "> 
+            <div class="bg-zinc-950 py-2 px-10 w-fit ">
+                Creativity
+            </div>
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
+            <!-- svelte-ignore a11y-no-static-element-interactions -->
+            <div class="text-black py-2" on:click={(e) => {hideCreatives = !hideCreatives}}>
+                {#if hideCreatives == true}
+                    <ArrowDown size={16} />
+                {:else}
+                    <ArrowUp size={16} />                    
+                {/if}
+            </div>
+        </div>
+
+        <div class="pl-16">
+            {#if hideCreatives == true}
+                <div class="border-l border-dashed border-l-black pb-10"></div>
+            {:else}
             <div class="border-l border-dashed border-l-black pb-10">
                 <div class="pt-8">
                     <div class="flex">
                         <div class="border-b border-dashed border-black w-10 h-2 pt-20"></div>
-                        <div class="group flex bg-white w-5/6 border-zinc-300 hover:bg-black hover:text-white duration-200 cursor-pointer">
-                            <div class="m-2">
-                                <div class="w-72 h-36 border drop-shadow-lg border-zinc-300">
+                        <div class="group grid grid-cols-3 bg-white w-5/6 border-zinc-300 drop-shadow-lg duration-200 cursor-pointer">
+                            <div class="p-2">
+                                <div class=" h-52 border border-zinc-300 hover:bg-zinc-950 hover:text-white ">
                                     hi
                                 </div>
                             </div>
-                            <div class="m-2">
-                                <div class="w-72 h-36 border drop-shadow-lg border-zinc-300">
+                            <div class="p-2">
+                                <div class=" h-52 border border-zinc-300 hover:bg-zinc-950 hover:text-white ">
                                     hi
                                 </div>
                             </div>
-                            <div class="m-2">
-                                <div class="w-72 h-36 border drop-shadow-lg border-zinc-300">
+                            <div class="p-2">
+                                <div class=" h-52 border border-zinc-300 hover:bg-zinc-950 hover:text-white ">
                                     hi
                                 </div>
                             </div>
@@ -58,34 +284,73 @@
                     </div>
                 </div>
             </div>
+            {/if}
         </div>
+
         <!-- Projects -->
-        <div class="font-bold text-2xl py-2 px-10 w-fit font-mono bg-black text-white"> Projects </div>
+        <div class="flex gap-2 items-center font-bold text-2xl font-mono text-white "> 
+            <div class="bg-zinc-950 py-2 px-10 w-fit ">
+                Projects 
+            </div>
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
+            <!-- svelte-ignore a11y-no-static-element-interactions -->
+            <div class="text-black py-2" on:click={(e) => {hideProjects = !hideProjects}}>
+                {#if hideProjects == true}
+                    <ArrowDown size={16} />
+                {:else}
+                    <ArrowUp size={16} />                    
+                {/if}
+            </div>
+        </div>
         <div class="pl-16">
-            <div class="border-l border-dashed border-l-black pb-10">
-                {#each projects as eachProject}
-                    <EachProject {eachProject}/>
-                {/each}
-                <div class="pt-6 pb-5 pl-10 flex justify-end w-11/12 pr-16">  
-                    <div class="hover:border border border-transparent hover:border-black underline-offset-8 flex py-3 px-6">
-                        <Github size={20}/>
-                        <span class="pl-2 text-xl font-semibold">
-                            More on Github
-                        </span>
+            {#if hideProjects == true}
+                <div class="border-l border-dashed border-l-black pb-10"></div>
+            {:else}
+                <div class="border-l border-dashed border-l-black pb-10">
+                    {#each projects as eachProject}
+                        <EachProject {eachProject}/>
+                    {/each}
+                    <div class="pt-4 flex justify-end w-11/12 pr-12">  
+                        <div class=" hover:bg-zinc-950 hover:text-white underline-offset-8 flex py-3 px-6">
+                            <Github size={20}/>
+                            <span class="pl-2 text-xl font-semibold">
+                                More on Github
+                            </span>
+                        </div>
                     </div>
-                        
                 </div>
-            </div>
+            {/if}
         </div>
+
         <!-- Experience -->
-        <div class="font-bold text-2xl py-2 px-10 w-fit font-mono bg-black text-white"> Experience </div>
-        <div class="pl-16">
-            <div class="border-l border-dashed border-l-black pb-10">
-                {#each projects as eachExperience}
-                    <EachExperience {eachExperience}/>
-                {/each}
+        <div class="flex gap-2 items-center font-bold text-2xl font-mono text-white "> 
+            <div class="bg-zinc-950 py-2 px-10 w-fit ">
+                Experiences 
+            </div>
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
+            <!-- svelte-ignore a11y-no-static-element-interactions -->
+            <div class="text-black py-2" on:click={(e) => {hideExperiences = !hideExperiences}}>
+                {#if hideExperiences == true}
+                    <ArrowDown size={16} />
+                {:else}
+                    <ArrowUp size={16} />                    
+                {/if}
             </div>
         </div>
-        <div class="font-bold py-2 px-10 w-fit font-mono bg-black text-white"> Dagmawi Babi </div>
+        <div class="pl-16">
+            {#if hideExperiences == true}
+                <div class="border-l border-dashed border-l-black pb-10"></div>
+            {:else}
+                <div class="border-l border-dashed border-l-black pb-10">
+                    {#each projects as eachExperience}
+                        <EachExperience {eachExperience}/>
+                    {/each}
+                </div>
+            {/if}
+        </div>
+        <div class="font-bold py-2 px-10 w-fit font-mono bg-zinc-950 text-white"> {Date().toString().substring(0,16)} </div>
     </div>
+
+    </div>
+
 </div>
