@@ -12,7 +12,8 @@
 		Podcast,
 		Mic,
 		NotebookPen,
-		Video
+		Video,
+		icons
 	} from 'lucide-svelte';
 	import EachExperience from '../components/eachExperience.svelte';
 	import EachProject from '../components/eachProject.svelte';
@@ -27,6 +28,7 @@
 		hideExperiences,
 		backgroundImage
 	} from '../store/store';
+	import EachCreativity from '../components/eachCreativity.svelte';
 
 	var projects = [
 		{
@@ -124,6 +126,27 @@
 		{
 			tech: 'Arduino',
 			logo: 'https://e7.pngegg.com/pngimages/758/841/png-clipart-arduino-max-electronic-circuit-pure-data-oscilloscope-raspberry-pi-icons-logo-microcontroller-thumbnail.png'
+		}
+	];
+
+	var creativeProjects = [
+		{
+			icon: NotebookPen,
+			label: 'Blog',
+			description:
+				'I like to write here and there about tech, philosophical and spiritual things that interest me. My blog site is called DBlogs'
+		},
+		{
+			icon: Mic,
+			label: 'Podcast',
+			description:
+				'I like to write here and there about tech, philosophical and spiritual things that interest me. My blog site is called DBlogs'
+		},
+		{
+			icon: Video,
+			label: 'Videos',
+			description:
+				'I like to write here and there about tech, philosophical and spiritual things that interest me. My blog site is called DBlogs'
 		}
 	];
 </script>
@@ -263,32 +286,21 @@
 				{:else}
 					<div class="border-l border-dashed border-l-black pb-10">
 						<div class="pt-8">
-							<div class="flex">
-								<div class="border-b border-dashed border-black w-10 h-2 pt-20"></div>
+							<div class="flex items-center">
+								<!-- Side Line -->
+								<div class="border-b border-dashed border-black w-10 h-2"></div>
+
+								<!-- Creative Container -->
 								<div
-									class="group grid grid-cols-3 bg-white w-5/6 border-zinc-300 drop-shadow-lg duration-200 cursor-pointer"
+									class="grid grid-cols-3 bg-white w-5/6 border border-zinc-300 hover:border-zinc-400 hover:rounded-2xl drop-shadow-lg hover:drop-shadow-2xl duration-200 cursor-pointer"
 								>
-									<div class="p-2">
-										<div
-											class="h-52 flex justify-center items-center border border-zinc-300 hover:border-zinc-950 text-zinc-600 hover:text-black hover:rounded-xl"
-										>
-											<NotebookPen />
-										</div>
-									</div>
-									<div class="p-2">
-										<div
-											class="h-52 flex justify-center items-center border border-zinc-300 hover:border-zinc-950 text-zinc-600 hover:text-black hover:rounded-xl"
-										>
-											<Mic />
-										</div>
-									</div>
-									<div class="p-2">
-										<div
-											class="h-52 flex justify-center items-center border border-zinc-300 hover:border-zinc-950 text-zinc-600 hover:text-black hover:rounded-xl"
-										>
-											<Video />
-										</div>
-									</div>
+									{#each creativeProjects as projects}
+										<EachCreativity
+											Icon={projects.icon}
+											label={projects.label}
+											description={projects.description}
+										/>
+									{/each}
 								</div>
 							</div>
 						</div>

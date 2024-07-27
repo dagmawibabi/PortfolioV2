@@ -26,13 +26,13 @@
 				<p class="pt-3">{eachProject.description}</p>
 				<div class="flex gap-2 pt-6">
 					<div
-						class="flex justify-center items-center px-5 pt-1 pb-2 border border-zinc-300 hover:border-black hover:bg-white text-zinc-600 group-hover:text-black hover:rounded-xl duration-200"
+						class="flex justify-center items-center px-5 pt-1 pb-2 border border-zinc-300 hover:border-black hover:bg-white text-zinc-600 group-hover:text-black group-hover:rounded-full duration-200"
 					>
 						<LucideExternalLink size={16} />
 						<span class="pl-2 font-semibold"> View Live </span>
 					</div>
 					<div
-						class="flex justify-center items-center px-5 pt-1 pb-2 border border-zinc-300 hover:border-black hover:bg-white text-zinc-600 group-hover:text-black hover:rounded-xl duration-200"
+						class="flex justify-center items-center px-5 pt-1 pb-2 border border-zinc-300 hover:border-black hover:bg-white text-zinc-600 group-hover:text-black group-hover:rounded-full duration-200"
 					>
 						<Code2 size={18} />
 						<span class="pl-2 font-semibold"> Source Code </span>
