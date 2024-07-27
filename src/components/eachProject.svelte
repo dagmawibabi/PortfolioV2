@@ -1,5 +1,5 @@
 <script>
-	import { Code2, Link, LucideExternalLink } from 'lucide-svelte';
+	import { Code2, LucideExternalLink, Layers } from 'lucide-svelte';
 
 	/**
 	 * @type {{ projectName: any; description: any; tags: any}}
@@ -7,27 +7,32 @@
 	export var eachProject;
 </script>
 
-<div class="pt-8">
-	<div class="flex items-center">
-		<div class="border-b border-dashed border-black w-10 h-2"></div>
-		<div class="group relative flex flex-col w-5/6">
+<div class="pt-9">
+	<div class="group flex items-center">
+		<!-- Side Line -->
+		<div class="border-b border-dashed group-hover:border-solid border-black w-10 h-2"></div>
+
+		<!-- Project Container -->
+		<div class="relative flex flex-col w-5/6">
 			<!-- Project Details -->
 			<div
-				class=" bg-white drop-shadow-lg border border-zinc-300 py-5 px-8 group-hover:border-black group-hover:bg-black group-hover:text-white duration-200 cursor-pointer"
+				class="py-5 px-8 bg-white drop-shadow-lg group-hover:drop-shadow-2xl border border-zinc-300 group-hover:border-black cursor-pointer group-hover:rounded-xl duration-200"
 			>
-				<p class="text-2xl font-semibold group-hover:underline group-hover:underline-offset-8">
+				<p
+					class="text-2xl text-zinc-600 group-hover:text-black font-semibold group-hover:underline-offset-8"
+				>
 					{eachProject.projectName}
 				</p>
-				<p class="pt-4">{eachProject.description}</p>
-				<div class="flex gap-2 pt-5">
+				<p class="pt-3">{eachProject.description}</p>
+				<div class="flex gap-2 pt-6">
 					<div
-						class="flex justify-center items-center px-5 pt-1 pb-2 border border-black group-hover:bg-white group-hover:text-black"
+						class="flex justify-center items-center px-5 pt-1 pb-2 border border-zinc-300 hover:border-black hover:bg-white text-zinc-600 group-hover:text-black hover:rounded-xl duration-200"
 					>
 						<LucideExternalLink size={16} />
 						<span class="pl-2 font-semibold"> View Live </span>
 					</div>
 					<div
-						class="flex justify-center items-center pl-5 pr-6 pt-1 pb-2 border border-black group-hover:bg-white group-hover:text-black"
+						class="flex justify-center items-center px-5 pt-1 pb-2 border border-zinc-300 hover:border-black hover:bg-white text-zinc-600 group-hover:text-black hover:rounded-xl duration-200"
 					>
 						<Code2 size={18} />
 						<span class="pl-2 font-semibold"> Source Code </span>
@@ -37,15 +42,20 @@
 
 			<!-- Project Tags -->
 			<div
-				class="absolute pr-3 right-0 lowercase gap-2 hidden group-hover:flex delay-1000 drop-shadow-2xl shadow-blue-800"
+				class="absolute -mt-5 right-5 bg-white hidden group-hover:flex drop-shadow-md border rounded-xl border-black overflow-clip duration-200"
 			>
-				{#each eachProject.tags as tag}
-					<div
-						class="py-1 px-4 rounded-bl-xl rounded-br-xl border-t border-zinc-300 border-t-dashed group-hover:bg-white group-hover:text-black"
-					>
-						Flutter
+				<div class="flex lowercase">
+					<div class="py-1 px-3 bg-black text-white cursor-default">
+						<Layers size={18} />
 					</div>
-				{/each}
+					{#each eachProject.tags as tag}
+						<div
+							class="py-1 px-4 font-mono font-semibold border-l border-white hover:bg-black hover:text-white cursor-default"
+						>
+							{tag}
+						</div>
+					{/each}
+				</div>
 			</div>
 		</div>
 	</div>

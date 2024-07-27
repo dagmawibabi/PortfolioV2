@@ -7,7 +7,12 @@
 		Send,
 		Linkedin,
 		Instagram,
-		Twitter
+		Twitter,
+		ChevronDown,
+		Podcast,
+		Mic,
+		NotebookPen,
+		Video
 	} from 'lucide-svelte';
 	import EachExperience from '../components/eachExperience.svelte';
 	import EachProject from '../components/eachProject.svelte';
@@ -121,13 +126,8 @@
 			logo: 'https://e7.pngegg.com/pngimages/758/841/png-clipart-arduino-max-electronic-circuit-pure-data-oscilloscope-raspberry-pi-icons-logo-microcontroller-thumbnail.png'
 		}
 	];
-
-	$: {
-		console.log($backgroundImage);
-	}
 </script>
 
-<div class="background-container" style="background-image: url('{$backgroundImage}');"></div>
 <div class="w-full">
 	<div
 		class="inset-0 -z-10 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] background-image: url('{$backgroundImage}')"
@@ -269,18 +269,24 @@
 									class="group grid grid-cols-3 bg-white w-5/6 border-zinc-300 drop-shadow-lg duration-200 cursor-pointer"
 								>
 									<div class="p-2">
-										<div class=" h-52 border border-zinc-300 hover:bg-zinc-950 hover:text-white">
-											hi
+										<div
+											class="h-52 flex justify-center items-center border border-zinc-300 hover:border-zinc-950 text-zinc-600 hover:text-black hover:rounded-xl"
+										>
+											<NotebookPen />
 										</div>
 									</div>
 									<div class="p-2">
-										<div class=" h-52 border border-zinc-300 hover:bg-zinc-950 hover:text-white">
-											hi
+										<div
+											class="h-52 flex justify-center items-center border border-zinc-300 hover:border-zinc-950 text-zinc-600 hover:text-black hover:rounded-xl"
+										>
+											<Mic />
 										</div>
 									</div>
 									<div class="p-2">
-										<div class=" h-52 border border-zinc-300 hover:bg-zinc-950 hover:text-white">
-											hi
+										<div
+											class="h-52 flex justify-center items-center border border-zinc-300 hover:border-zinc-950 text-zinc-600 hover:text-black hover:rounded-xl"
+										>
+											<Video />
 										</div>
 									</div>
 								</div>
@@ -299,17 +305,23 @@
 				{:else}
 					<div class="border-l border-dashed border-l-black pb-10">
 						{#each projects as eachProject}
-							<EachProject
-								{eachProject}
-								on:click
-								on:mouseenter={() => backgroundImage.set(eachProject.image)}
-								on:mouseleave={() => backgroundImage.set('')}
-							/>
+							<EachProject {eachProject} />
 						{/each}
-						<div class="pt-4 flex justify-end w-11/12 pr-12">
-							<div class=" hover:bg-zinc-950 hover:text-white underline-offset-8 flex py-3 px-6">
-								<Github size={20} />
-								<span class="pl-2 text-xl font-semibold"> More on Github </span>
+
+						<!-- More of Github -->
+						<div class="pt-6 w-11/12 pr-12">
+							<div class="flex justify-center py-3 pl-9">
+								<ChevronDown size={20} />
+							</div>
+							<div class="flex justify-center">
+								<div
+									class="group flex border border-white hover:border-black items-center cursor-pointer rounded-2xl overflow-clip"
+								>
+									<div class="py-3 px-4 group-hover:bg-black text-white">
+										<Github size={20} class=" " />
+									</div>
+									<span class="pl-4 pr-6 text-xl font-semibold"> More on Github </span>
+								</div>
 							</div>
 						</div>
 					</div>
